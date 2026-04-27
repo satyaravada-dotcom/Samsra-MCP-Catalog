@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='UTF-8'/><meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+<title>Samsara BizTech MCP Catalog</title>
+<link href='https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap' rel='stylesheet'/>
+<style>
+:root{--navy:#00263E;--blue:#0384FB;--bl:#3fa6ff;--dim:rgba(3,132,251,.08);--bg:#eef2f7;--sf:#fff;--s2:#f6f9fc;--bd:#dde4ee;--tx:#0c1a27;--t2:#4a5e72;--t3:#8a9aaa;--gn:#00b87a;--am:#f59e0b;--rd:#ef4444;--gbg:#f0fdf4;--abg:#fffbeb;--bbg:#eff6ff;--pbg:#f5f3ff}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh}
+.hdr{background:var(--navy);padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;border-bottom:2.5px solid var(--blue)}
+.hdr-l{display:flex;align-items:center;gap:13px}
+.logo{width:34px;height:34px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:12px}
+.ht{color:#fff;font-size:14px;font-weight:700}.hs{color:rgba(255,255,255,.35);font-size:10px;margin-top:1px}
+.hdr-r{display:flex;align-items:center;gap:10px}
+.bref{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:7px 14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;cursor:pointer}
+.bref:hover{background:rgba(255,255,255,.18)}
+.ts{color:rgba(255,255,255,.25);font-size:10px;font-family:'DM Mono',monospace}
+.hero{background:linear-gradient(135deg,#00263E 0%,#003a5c 100%);padding:22px 32px 0}
+.hs2{display:flex;gap:36px;margin-bottom:20px;flex-wrap:wrap}
+.sv{color:var(--blue);font-size:26px;font-weight:800;line-height:1;letter-spacing:-1px}
+.sl{color:rgba(255,255,255,.32);font-size:9px;text-transform:uppercase;letter-spacing:.9px;margin-top:2px}
+.tabs{background:var(--navy);padding:0 32px;display:flex;border-top:1px solid rgba(255,255,255,.05)}
+.tab{padding:11px 18px;font-size:12px;font-weight:600;color:rgba(255,255,255,.38);cursor:pointer;border-bottom:2.5px solid transparent;transition:all .15s;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.tab.active{color:#fff;border-bottom-color:var(--blue)}.tab:hover:not(.active){color:rgba(255,255,255,.7)}
+.tc{background:rgba(255,255,255,.1);color:rgba(255,255,255,.55);border-radius:8px;padding:1px 6px;font-size:9px;font-weight:700}
+.tab.active .tc{background:var(--blue);color:#fff}
+.toolbar{padding:18px 32px 0;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.sw{position:relative;flex:1;min-width:200px}
+.sw svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);opacity:.25}
+.si{width:100%;padding:9px 12px 9px 33px;border:1.5px solid var(--bd);border-radius:9px;background:var(--sf);font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;color:var(--tx);outline:none}
+.si:focus{border-color:var(--blue)}
+.fb{padding:7px 13px;border-radius:9px;border:1.5px solid var(--bd);background:var(--sf);font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;cursor:pointer;color:var(--t2);white-space:nowrap}
+.fb.active{background:var(--blue);color:#fff;border-color:var(--blue)}.fb:hover:not(.active){border-color:var(--blue);color:var(--blue)}
+.legend{padding:12px 32px 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.ll{font-size:10px;color:var(--t3);font-weight:600;text-transform:uppercase;letter-spacing:.6px}
+.tp{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700}
+.tp0{background:var(--gbg);color:#166534}.tp1{background:var(--bbg);color:#1e40af}.tp2{background:var(--abg);color:#92400e}.tp3{background:var(--pbg);color:#6b21a8}
+.gw{padding:18px 32px 48px}
+.cl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.1px;color:var(--t3);margin-bottom:11px;display:flex;align-items:center;gap:8px}
+.cb{background:var(--bd);color:var(--t3);border-radius:8px;padding:1px 7px;font-size:9px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:13px;margin-bottom:28px}
+.card{background:var(--sf);border-radius:12px;border:1.5px solid var(--bd);padding:17px 18px;transition:all .18s;position:relative;overflow:hidden;cursor:pointer}
+.card-bar{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--bl));opacity:0;transition:opacity .18s}
+.card:hover{border-color:var(--blue);box-shadow:0 5px 24px rgba(3,132,251,.1);transform:translateY(-1px)}.card:hover .card-bar{opacity:1}
+.ch{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px}
+.ci{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.cs{display:flex;align-items:center;gap:4px;font-size:9px;font-weight:700;text-transform:uppercase}
+.dot{width:5px;height:5px;border-radius:50%}
+.cn{font-size:13px;font-weight:800;margin-bottom:1px;line-height:1.25}
+.csrc{font-family:'DM Mono',monospace;font-size:9px;color:var(--t3);margin-bottom:7px}
+.cd{font-size:11.5px;color:var(--t2);line-height:1.58;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ctags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:9px}
+.tag{background:var(--dim);color:var(--blue);border-radius:4px;padding:2px 7px;font-size:9px;font-weight:700;text-transform:uppercase}
+.cf{display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid var(--bd);gap:6px;margin-top:6px}
+.cteam{font-size:10px;color:var(--t3);font-weight:600}
+.vbtn{background:var(--s2);border:1.5px solid var(--bd);border-radius:7px;padding:5px 10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:10px;font-weight:700;cursor:pointer;color:var(--t2)}
+.vbtn:hover{border-color:var(--blue);color:var(--blue)}
+.nb{background:#dcfce7;color:#166634;font-size:8px;font-weight:800;text-transform:uppercase;border-radius:3px;padding:1px 5px;margin-left:3px}
+.dp{position:fixed;right:0;top:0;bottom:0;width:420px;background:var(--sf);z-index:250;overflow-y:auto;box-shadow:-8px 0 40px rgba(0,0,0,.1);border-left:1.5px solid var(--bd);transform:translateX(100%);transition:transform .22s cubic-bezier(.4,0,.2,1);padding:26px}
+.dp.open{transform:translateX(0)}
+.dp-x{position:absolute;top:16px;right:16px;background:var(--s2);border:1px solid var(--bd);border-radius:7px;width:28px;height:28px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--t2)}
+.dp-ir{display:flex;align-items:center;gap:13px;margin-bottom:18px;padding-right:30px}
+.dp-ic{width:48px;height:48px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.dp-n{font-size:17px;font-weight:800}.dp-c{font-size:11px;color:var(--t3);margin-top:2px}
+.dp-s{margin-bottom:15px}
+.dp-st{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--t3);margin-bottom:5px}
+.dp-t{font-size:12px;color:var(--t2);line-height:1.65}
+.dp-m{font-family:'DM Mono',monospace;font-size:10px;background:var(--s2);border:1px solid var(--bd);border-radius:6px;padding:7px 10px;color:var(--tx);word-break:break-all;line-height:1.5}
+.dp-chips{display:flex;flex-wrap:wrap;gap:5px}
+.dp-chip{background:var(--dim);color:var(--blue);border-radius:5px;padding:2px 9px;font-size:10px;font-weight:700}
+.dp-hr{border:none;border-top:1px solid var(--bd);margin:13px 0}
+.abox{background:var(--s2);border:1.5px solid var(--bd);border-radius:9px;padding:14px;margin-top:6px}
+.abox-t{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--t3);margin-bottom:10px}
+.astep{display:flex;gap:9px;margin-bottom:9px;align-items:flex-start}
+.asn{width:18px;height:18px;border-radius:50%;background:var(--blue);color:#fff;font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ast{font-size:11.5px;color:var(--t2);line-height:1.5}
+.sbadge{display:inline-flex;align-items:center;gap:4px;background:#4a154b;color:#fff;border-radius:5px;padding:2px 8px;font-size:10px;font-weight:700;font-family:'DM Mono',monospace}
+.rm-wrap{padding:18px 32px 48px}
+.rm-hdr{margin-bottom:4px}
+.rm-hdr h2{font-size:15px;font-weight:800}
+.rm-hdr p{font-size:12px;color:var(--t2);margin-top:3px;margin-bottom:16px}
+.qf-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
+.qf{padding:5px 13px;border-radius:20px;border:1.5px solid var(--bd);background:var(--sf);font-size:11px;font-weight:700;cursor:pointer;color:var(--t2)}
+.qf.active{color:#fff}
+.rm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:13px;margin-bottom:24px}
+.rmc{background:var(--sf);border-radius:12px;border:1.5px solid var(--bd);padding:16px 18px;position:relative;overflow:hidden;transition:border .18s}
+.rmc:hover{border-color:rgba(3,132,251,.4)}
+.rm-stripe{position:absolute;top:0;left:0;width:4px;bottom:0;border-radius:3px 0 0 3px}
+.rm-ql{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;margin-bottom:5px;padding-left:12px}
+.rm-n{font-size:13px;font-weight:800;margin-bottom:2px;padding-left:12px}
+.rm-src{font-family:'DM Mono',monospace;font-size:9px;color:var(--t3);margin-bottom:7px;padding-left:12px}
+.rm-d{font-size:11.5px;color:var(--t2);line-height:1.55;margin-bottom:10px;padding-left:12px}
+.rm-notes{background:#f8f9fb;border-radius:6px;padding:7px 10px;font-size:11px;color:var(--t2);margin:0 0 10px 12px;font-style:italic;border-left:2px solid var(--bd)}
+.rm-ft{display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid var(--bd);padding-left:12px}
+.rs{font-size:9px;font-weight:800;padding:2px 8px;border-radius:10px;text-transform:uppercase}
+.rs-p{background:#f1f5f9;color:#475569}.rs-pr{background:var(--bbg);color:#1e40af}
+.rs-b{background:#fee2e2;color:#991b1b}.rs-r{background:var(--abg);color:#92400e}
+.ag-wrap{padding:20px 32px 48px}
+.ag-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.agc{background:var(--sf);border-radius:12px;border:1.5px solid var(--bd);padding:22px}
+.ag-ico{font-size:26px;margin-bottom:12px}
+.ag-tit{font-size:14px;font-weight:800;margin-bottom:6px}
+.ag-tx{font-size:12px;color:var(--t2);line-height:1.65;margin-bottom:12px}
+.ag-step{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
+.ag-sn{min-width:20px;height:20px;border-radius:50%;background:var(--navy);color:#fff;font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.ag-st{font-size:12px;color:var(--t2);line-height:1.5}
+.ag-hl{border-radius:8px;padding:10px 12px;font-size:11px;font-weight:600;margin-top:10px;line-height:1.55}
+.cfg{background:#fef3c7;border:1.5px solid #fde68a;border-radius:10px;padding:14px 18px;margin:18px 32px 0;display:flex;gap:12px;align-items:flex-start}
+.cfg code{background:rgba(0,0,0,.07);border-radius:4px;padding:1px 5px;font-family:'DM Mono',monospace;font-size:10px}
+.spin-wrap{text-align:center;padding:60px 20px}
+.spin{width:34px;height:34px;border:3px solid var(--bd);border-top-color:var(--blue);border-radius:50%;animation:sp .8s linear infinite;margin:0 auto 14px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.ltext{font-size:12px;color:var(--t3)}
+.empty{text-align:center;padding:48px 20px;color:var(--t3);font-size:13px}
+.toast{position:fixed;bottom:20px;right:20px;background:var(--navy);color:#fff;border-radius:8px;padding:10px 16px;font-size:12px;font-weight:600;z-index:999;display:none;box-shadow:0 4px 20px rgba(0,0,0,.2);border-left:3px solid var(--blue)}
+.toast.show{display:block;animation:fi .2s ease}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+</style>
+
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-l">
+    <div class="logo">SC</div>
+    <div><div class="ht">BizTech MCP Catalog</div><div class="hs">Samsara &middot; AI Integration Registry</div></div>
+  </div>
+  <div class="hdr-r">
+    <span class="ts" id="ts"></span>
+    <button class="bref" onclick="refreshData()">&#8635; Refresh</button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hs2">
+    <div><div class="sv" id="sTotal">&#8212;</div><div class="sl">Connectors Live</div></div>
+    <div><div class="sv" id="sActive">&#8212;</div><div class="sl">Active</div></div>
+    <div><div class="sv" id="sCats">&#8212;</div><div class="sl">Categories</div></div>
+    <div><div class="sv" id="sRm">&#8212;</div><div class="sl">On Roadmap</div></div>
+    <div><div class="sv" id="sNew">&#8212;</div><div class="sl">Added This Month</div></div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('registry',this)">&#128268; Live Catalog <span class="tc" id="tc-r">&#8212;</span></div>
+  <div class="tab" onclick="switchTab('roadmap',this)">&#128506;&#65039; Roadmap <span class="tc" id="tc-rm">&#8212;</span></div>
+  <div class="tab" onclick="switchTab('access',this)">&#128273; How to Get Access</div>
+</div>
+
+<div class="cfg" id="cfgBanner" style="display:none">
+  <div style="font-size:18px;flex-shrink:0">&#9888;</div>
+  <div style="font-size:12px;color:#78350f;line-height:1.6">
+    <strong>Google Sheet not connected.</strong> Open this file and set the 3 config values at the top of the &lt;script&gt;:
+    <code>MCP_CSV_URL</code>, <code>ROADMAP_CSV_URL</code>, and <code>SHEET_EDIT_URL</code>. See the setup guide for full instructions.
+  </div>
+</div>
+
+<div id="tab-registry">
+  <div class="toolbar">
+    <div class="sw">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input class="si" id="si" placeholder="Search by name, source, or capability..." oninput="filterCards()"/>
+    </div>
+    <button class="fb active" onclick="setFilter('All',this)">All</button>
+    <button class="fb" onclick="setFilter('Data',this)">Data</button>
+    <button class="fb" onclick="setFilter('Comms',this)">Comms</button>
+    <button class="fb" onclick="setFilter('ERP',this)">ERP</button>
+    <button class="fb" onclick="setFilter('Productivity',this)">Productivity</button>
+    <button class="fb" onclick="setFilter('Dev',this)">Dev</button>
+    <button class="fb" onclick="setFilter('Custom',this)">Custom</button>
+  </div>
+  <div class="legend">
+    <span class="ll">Access tier:</span>
+    <span class="tp tp0">&#9889; Self-serve via Claude.ai</span>
+    <span class="tp tp1">&#127915; Submit helpdesk ticket</span>
+    <span class="tp tp2">&#128203; Team approval required</span>
+    <span class="tp tp3">&#128274; Restricted</span>
+  </div>
+  <div class="gw" id="gridWrap">
+    <div class="spin-wrap"><div class="spin"></div><div class="ltext">Loading from data source...</div></div>
+  </div>
+</div>
+
+<div id="tab-roadmap" style="display:none">
+  <div class="rm-wrap">
+    <div class="rm-hdr">
+      <h2>MCP Roadmap</h2>
+      <p>Planned and in-flight integrations. Maintained by the BizTech AI Platform team.</p>
+    </div>
+    <div class="qf-row" id="qFilters"></div>
+    <div id="rmWrap"><div class="spin-wrap"><div class="spin"></div><div class="ltext">Loading...</div></div></div>
+  </div>
+</div>
+
+<div id="tab-access" style="display:none">
+  <div class="ag-wrap">
+    <div style="margin-bottom:20px">
+      <div style="font-size:16px;font-weight:800;margin-bottom:4px">How to Get Access to an MCP</div>
+      <div style="font-size:12px;color:var(--t2)">All MCPs run through Claude Enterprise. The access path depends on the tier shown on each card.</div>
+    </div>
+    <div class="ag-grid">
+      <div class="agc">
+        <div class="ag-ico">&#9889;</div>
+        <div class="ag-tit">Self-Serve via Claude.ai</div>
+        <div class="ag-tx">Enable these directly in Claude.ai settings. All you need is a Samsara Claude Enterprise seat.</div>
+        <div class="ag-step"><div class="ag-sn">1</div><div class="ag-st">Open <strong>claude.ai</strong> &rarr; sign in with Samsara Okta SSO</div></div>
+        <div class="ag-step"><div class="ag-sn">2</div><div class="ag-st">Profile icon &rarr; <strong>Settings &rarr; Integrations</strong></div></div>
+        <div class="ag-step"><div class="ag-sn">3</div><div class="ag-st">Find the connector &rarr; <strong>Connect</strong> &rarr; OAuth authentication</div></div>
+        <div class="ag-hl" style="background:var(--gbg);color:#166534">&#10003; Gmail, Google Calendar, Drive, Slack, Granola, Lucid, Atlassian, Figma, Zoom, Airtable, Smartsheet</div>
+      </div>
+      <div class="agc">
+        <div class="ag-ico">&#127915;</div>
+        <div class="ag-tit">Submit a Helpdesk Ticket</div>
+        <div class="ag-tx">Post in the appropriate Slack channel with the MCP name and your use case. BizTech will provision access.</div>
+        <div class="ag-step"><div class="ag-sn">1</div><div class="ag-st">Post in <span class="sbadge">#help-biztech</span> with the MCP name and use case</div></div>
+        <div class="ag-step"><div class="ag-sn">2</div><div class="ag-st">For all Databricks MCPs, post in <span class="sbadge">#helpdesk-data</span></div></div>
+        <div class="ag-step"><div class="ag-sn">3</div><div class="ag-st">Access provisioned within <strong>1&ndash;2 business days</strong> &mdash; Slack DM when ready</div></div>
+        <div class="ag-hl" style="background:var(--bbg);color:#1e40af">&#127915; NetSuite, Databricks Genie spaces, Glean, Salesforce UAT, Workato connectors, Cloudzero, G2, Mixpanel</div>
+      </div>
+      <div class="agc">
+        <div class="ag-ico">&#128203;</div>
+        <div class="ag-tit">Team Approval Required</div>
+        <div class="ag-tx">Sensitive integrations need sign-off from the owning team. Check the card for which team owns it.</div>
+        <div class="ag-step"><div class="ag-sn">1</div><div class="ag-st">Post in <span class="sbadge">#help-biztech</span> with MCP name and business justification</div></div>
+        <div class="ag-step"><div class="ag-sn">2</div><div class="ag-st">Request routed to the owning team for approval</div></div>
+        <div class="ag-step"><div class="ag-sn">3</div><div class="ag-st">Owning team approves &rarr; BizTech provisions access</div></div>
+        <div class="ag-hl" style="background:var(--abg);color:#92400e">&#128203; Finance Systems, People Analytics spaces, Marketo, restricted Salesforce</div>
+      </div>
+      <div class="agc">
+        <div class="ag-ico">&#128640;</div>
+        <div class="ag-tit">Propose a New MCP</div>
+        <div class="ag-tx">Know of an integration that should be in this catalog? Propose it and BizTech will evaluate it for the roadmap.</div>
+        <div class="ag-step"><div class="ag-sn">1</div><div class="ag-st">Post in <span class="sbadge">#help-biztech</span> with the tool name and use case</div></div>
+        <div class="ag-step"><div class="ag-sn">2</div><div class="ag-st">BizTech evaluates feasibility, security requirements, and vendor MCP availability</div></div>
+        <div class="ag-step"><div class="ag-sn">3</div><div class="ag-st">Approved proposals are added to the roadmap and this catalog</div></div>
+        <div class="ag-hl" style="background:#f8fafc;color:var(--t2);border:1px solid var(--bd)">
+          This catalog is maintained by the BizTech AI Platform team. All data is sourced from a shared Google Sheet &mdash; updates appear within minutes of editing.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="dp" id="dp">
+  <button class="dp-x" onclick="closeDetail()">&#215;</button>
+  <div id="dpContent"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script>
+// ════════════════════════════════════════════════════════════
+//  CONFIGURATION — only 3 values to set. Never touch the
+//  rest of this file to update catalog content.
+//
+//  How to get these URLs:
+//  1. Open your Google Sheet
+//  2. File > Share > Publish to web
+//  3. Select the tab > CSV format > Publish > Copy URL
+// ════════════════════════════════════════════════════════════
+const MCP_CSV_URL     = 'PASTE_YOUR_CSV_URL_HERE';
+const ROADMAP_CSV_URL = 'PASTE_YOUR_CSV_URL_HERE';
+const SHEET_EDIT_URL  = 'PASTE_YOUR_SHEET_URL_HERE';
+// ════════════════════════════════════════════════════════════
+
+const CAT={
+  ERP:{bg:'#fef3c7',icon:'🏛️'},Data:{bg:'#dbeafe',icon:'📊'},
+  Comms:{bg:'#dcfce7',icon:'💬'},Productivity:{bg:'#ede9fe',icon:'⚡'},
+  Dev:{bg:'#fee2e2',icon:'🛠️'},Custom:{bg:'#fce7f3',icon:'✨'}
+};
+const TIER=[
+  {label:'⚡ Self-serve via Claude.ai',cls:'tp0'},
+  {label:'🎫 Submit helpdesk ticket',cls:'tp1'},
+  {label:'📋 Team approval required',cls:'tp2'},
+  {label:'🔒 Restricted access',cls:'tp3'}
+];
+const QC={
+  'FY26 Q2':'#0384FB','FY26 Q3':'#00b87a','FY26 Q4':'#f59e0b',
+  'FY27 Q1':'#7c3aed','FY27 Q2':'#ef4444','FY27 H2':'#515151'
+};
+const SL={planned:'Planned',progress:'In Progress',review:'In Review',blocked:'Blocked'};
+const SC={planned:'rs-p',progress:'rs-pr',review:'rs-r',blocked:'rs-b'};
+
+let mcps=[],roadmap=[],curF='All',curTab='registry',curQ='All';
+const configured=MCP_CSV_URL!=='YOUR_MCPS_TAB_CSV_URL_HERE';
+
+function parseCSV(txt){
+  const lines=txt.trim().split('\n');
+  if(lines.length<2) return [];
+  const hdrs=lines[0].split(',').map(h=>h.trim().replace(/^"|"$/g,''));
+  return lines.slice(1).filter(l=>l.trim()).map(line=>{
+    const vals=[];let cur='',inQ=false;
+    for(const ch of line){
+      if(ch==='"'){inQ=!inQ}
+      else if(ch===','&&!inQ){vals.push(cur.trim());cur=''}
+      else cur+=ch;
+    }
+    vals.push(cur.trim());
+    const obj={};
+    hdrs.forEach((h,i)=>obj[h]=(vals[i]||'').replace(/^"|"$/g,''));
+    return obj;
+  });
+}
+function pTags(s){return s?s.split(',').map(x=>x.trim()).filter(Boolean):[]}
+function pBool(s){return s&&s.toLowerCase()==='true'}
+
+async function loadData(){
+  if(!configured){
+    document.getElementById('cfgBanner').style.display='flex';
+    document.getElementById('gridWrap').innerHTML='<div class="empty">Connect your Google Sheet to display MCP data.<br/>See the setup guide (mcp_catalog_setup_guide.md) for instructions.</div>';
+    return;
+  }
+  document.getElementById('gridWrap').innerHTML='<div class="spin-wrap"><div class="spin"></div><div class="ltext">Loading from Google Sheets...</div></div>';
+  try{
+    const[mr,rr]=await Promise.all([
+      fetch(MCP_CSV_URL+'&t='+Date.now()),
+      fetch(ROADMAP_CSV_URL+'&t='+Date.now())
+    ]);
+    if(!mr.ok) throw new Error('MCPs tab returned HTTP '+mr.status+'. Is it published as CSV?');
+    if(!rr.ok) throw new Error('Roadmap tab returned HTTP '+rr.status+'. Is it published as CSV?');
+    const[mt,rt]=await Promise.all([mr.text(),rr.text()]);
+    mcps=parseCSV(mt).map(r=>({
+      id:r.id, name:r.name, cat:r.category, status:r.status,
+      source:r.source, url:r.url, desc:r.description,
+      access:r.access, tier:parseInt(r.tier)||1,
+      team:r.team, tags:pTags(r.tags), isNew:pBool(r.isNew)
+    })).filter(m=>m.name);
+    roadmap=parseCSV(rt).map(r=>({
+      id:r.id, name:r.name, q:r.quarter, status:r.status,
+      source:r.source, cat:r.category, desc:r.description,
+      team:r.team, notes:r.notes
+    })).filter(r=>r.name);
+    initStats(); renderGrid();
+    if(curTab==='roadmap') renderRoadmap();
+    const now=new Date();
+    document.getElementById('ts').textContent='Refreshed '+now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+  } catch(e){
+    document.getElementById('gridWrap').innerHTML=
+      '<div style="text-align:center;padding:50px 20px">'
+      +'<div style="font-size:32px;opacity:.35;margin-bottom:12px">⚠️</div>'
+      +'<div style="font-size:13px;font-weight:700;margin-bottom:6px">Could not load data</div>'
+      +'<div style="font-size:12px;color:var(--t2);max-width:440px;margin:0 auto 12px;line-height:1.6">Make sure both tabs are published as CSV under File → Share → Publish to web in Google Sheets</div>'
+      +'<div style="font-family:DM Mono,monospace;font-size:10px;background:var(--s2);border:1px solid var(--bd);border-radius:6px;padding:8px 12px;display:inline-block;color:var(--t2);max-width:480px;text-align:left;word-break:break-all">'+e.message+'</div>'
+      +'<br/><button class="bref" style="margin-top:14px;color:var(--blue);border-color:var(--blue)" onclick="loadData()">Try again</button>'
+      +'</div>';
+  }
+}
+function refreshData(){loadData()}
+
+function initStats(){
+  document.getElementById('sTotal').textContent=mcps.length;
+  document.getElementById('sActive').textContent=mcps.filter(m=>m.status==='Active').length;
+  document.getElementById('sCats').textContent=new Set(mcps.map(m=>m.cat)).size;
+  document.getElementById('sRm').textContent=roadmap.length;
+  document.getElementById('sNew').textContent=mcps.filter(m=>m.isNew).length;
+  document.getElementById('tc-r').textContent=mcps.length;
+  document.getElementById('tc-rm').textContent=roadmap.length;
+}
+
+function switchTab(tab,el){
+  curTab=tab;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  ['registry','roadmap','access'].forEach(t=>
+    document.getElementById('tab-'+t).style.display=t===tab?'block':'none'
+  );
+  if(tab==='roadmap'&&roadmap.length) renderRoadmap();
+  closeDetail();
+}
+
+function setFilter(f,btn){
+  curF=f;
+  document.querySelectorAll('.fb').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGrid();
+}
+function filterCards(){renderGrid()}
+
+function getFiltered(){
+  const q=(document.getElementById('si').value||'').toLowerCase();
+  return mcps.filter(m=>{
+    const mc=curF==='All'||m.cat===curF;
+    const mq=!q||m.name.toLowerCase().includes(q)||
+      (m.desc||'').toLowerCase().includes(q)||
+      (m.source||'').toLowerCase().includes(q)||
+      (m.tags||[]).some(t=>t.toLowerCase().includes(q));
+    return mc&&mq;
+  });
+}
+function sc(s){return s==='Active'?'var(--gn)':s==='Beta'?'var(--am)':'var(--rd)'}
+
+function renderGrid(){
+  const f=getFiltered();
+  const wrap=document.getElementById('gridWrap');
+  if(!f.length){wrap.innerHTML='<div class="empty">🔍<br/><br/>No MCPs match your search</div>';return}
+  const groups={};
+  f.forEach(m=>{if(!groups[m.cat])groups[m.cat]=[];groups[m.cat].push(m)});
+  let html='';
+  for(const[cat,items]of Object.entries(groups)){
+    html+=`<div class="cl">${cat}<span class="cb">${items.length}</span></div><div class="grid">`;
+    items.forEach(m=>{
+      const meta=CAT[m.cat]||CAT.Custom;
+      const tier=TIER[m.tier]||TIER[1];
+      const tags=(m.tags||[]).slice(0,3).map(t=>`<span class="tag">${t}</span>`).join('');
+      const nb=m.isNew?'<span class="nb">NEW</span>':'';
+      html+=`<div class="card" onclick="openDetail('${m.id}')">
+        <div class="card-bar"></div>
+        <div class="ch">
+          <div class="ci" style="background:${meta.bg}">${meta.icon}</div>
+          <div class="cs" style="color:${sc(m.status)}">
+            <div class="dot" style="background:${sc(m.status)}"></div>${m.status}${nb}
+          </div>
+        </div>
+        <div class="cn">${m.name}</div>
+        <div class="csrc">${m.source}</div>
+        <div class="cd">${m.desc}</div>
+        <div class="ctags">${tags}</div>
+        <div style="padding:6px 0;border-top:1px solid var(--bd);margin-bottom:6px">
+          <span class="tp ${tier.cls}" style="font-size:9px">${tier.label}</span>
+        </div>
+        <div class="cf">
+          <span class="cteam">🏢 ${m.team}</span>
+          <button class="vbtn" onclick="event.stopPropagation();openDetail('${m.id}')">View details</button>
+        </div>
+      </div>`;
+    });
+    html+='</div>';
+  }
+  wrap.innerHTML=html;
+}
+
+function buildAccessSteps(m){
+  const isData=m.cat==='Data'||((m.source||'').toLowerCase().includes('databricks'));
+  if(parseInt(m.tier)===0){
+    return `<div class="astep"><div class="asn">1</div><div class="ast">Open <strong>claude.ai</strong> &rarr; sign in with Samsara Okta SSO</div></div>
+            <div class="astep"><div class="asn">2</div><div class="ast">Profile &rarr; <strong>Settings &rarr; Integrations</strong> &rarr; find ${m.name}</div></div>
+            <div class="astep"><div class="asn">3</div><div class="ast">Click <strong>Connect</strong> and authenticate via OAuth &mdash; ready immediately</div></div>`;
+  } else if(isData){
+    return `<div class="astep"><div class="asn">1</div><div class="ast">Post in <span class="sbadge">#helpdesk-data</span> or <span class="sbadge">#help-biztech</span></div></div>
+            <div class="astep"><div class="asn">2</div><div class="ast">${m.access}</div></div>
+            <div class="astep"><div class="asn">3</div><div class="ast">Access provisioned within 1&ndash;2 business days. Slack DM when ready.</div></div>`;
+  } else {
+    return `<div class="astep"><div class="asn">1</div><div class="ast">Post in <span class="sbadge">#help-biztech</span> with the MCP name and your use case</div></div>
+            <div class="astep"><div class="asn">2</div><div class="ast">${m.access}</div></div>
+            <div class="astep"><div class="asn">3</div><div class="ast">Access provisioned within 1&ndash;2 business days. Slack DM when ready.</div></div>`;
+  }
+}
+
+function openDetail(id){
+  const m=mcps.find(x=>x.id==id);if(!m)return;
+  const meta=CAT[m.cat]||CAT.Custom;
+  const tier=TIER[m.tier]||TIER[1];
+  const chips=(m.tags||[]).map(t=>`<span class="dp-chip">${t}</span>`).join('');
+  document.getElementById('dpContent').innerHTML=`
+    <div class="dp-ir">
+      <div class="dp-ic" style="background:${meta.bg}">${meta.icon}</div>
+      <div>
+        <div class="dp-n">${m.name}</div>
+        <div class="dp-c" style="color:${sc(m.status)}">&#9679; ${m.status} &nbsp;&middot;&nbsp; ${m.cat}</div>
+      </div>
+    </div>
+    <div class="dp-s"><div class="dp-st">What it does</div><div class="dp-t">${m.desc}</div></div>
+    <hr class="dp-hr"/>
+    <div class="dp-s"><div class="dp-st">Provider</div><div class="dp-t">${m.source}</div></div>
+    ${m.url?`<div class="dp-s"><div class="dp-st">Endpoint URL</div><div class="dp-m">${m.url}</div></div>`:''}
+    <hr class="dp-hr"/>
+    <div class="dp-s">
+      <div class="dp-st">Access Tier</div>
+      <span class="tp ${tier.cls}" style="font-size:11px;display:inline-flex;margin-bottom:10px">${tier.label}</span>
+      <div class="abox">
+        <div class="abox-t">How to Get Access</div>
+        ${buildAccessSteps(m)}
+      </div>
+    </div>
+    <hr class="dp-hr"/>
+    <div class="dp-s"><div class="dp-st">Key Capabilities</div>
+      <div class="dp-chips">${chips||'<span style="font-size:11px;color:var(--t3)">See description above</span>'}</div>
+    </div>
+    <hr class="dp-hr"/>
+    <div class="dp-s"><div class="dp-st">Owning Team</div><div class="dp-t">🏢 ${m.team}</div></div>
+  `;
+  document.getElementById('dp').classList.add('open');
+}
+function closeDetail(){document.getElementById('dp').classList.remove('open')}
+
+function renderRoadmap(){
+  const qs=['All',...[...new Set(roadmap.map(r=>r.q))].sort()];
+  let qHtml='';
+  qs.forEach(q=>{
+    const active=curQ===q;
+    const bg=q==='All'?'var(--navy)':QC[q]||'#444';
+    const cnt=q==='All'?'':` (${roadmap.filter(r=>r.q===q).length})`;
+    qHtml+=`<button class="qf${active?' active':''}" style="${active?'background:'+bg+';color:#fff;border-color:'+bg:''}" onclick="setQF('${q}',this,'${bg}')">${q==='All'?'All Quarters':q}${cnt}</button>`;
+  });
+  document.getElementById('qFilters').innerHTML=qHtml;
+  const f=curQ==='All'?roadmap:roadmap.filter(r=>r.q===curQ);
+  const groups={};f.forEach(r=>{if(!groups[r.q])groups[r.q]=[];groups[r.q].push(r)});
+  let html='';
+  if(!f.length) html='<div class="empty">&#128506;&#65039;<br/><br/>No items for this quarter</div>';
+  for(const[q,items]of Object.entries(groups)){
+    const qc=QC[q]||'#444';
+    html+=`<div class="cl" style="color:${qc}">${q}<span class="cb" style="background:${qc}16;color:${qc}">${items.length}</span></div><div class="rm-grid">`;
+    items.forEach(r=>{
+      const cm=CAT[r.cat]||CAT.Custom;
+      html+=`<div class="rmc">
+        <div class="rm-stripe" style="background:${qc}"></div>
+        <div class="rm-ql" style="color:${qc}">${q} &nbsp;&middot;&nbsp; ${cm.icon} ${r.cat}</div>
+        <div class="rm-n">${r.name}</div>
+        ${r.source?`<div class="rm-src">${r.source}</div>`:''}
+        <div class="rm-d">${r.desc}</div>
+        ${r.notes?`<div class="rm-notes">&#128221; ${r.notes}</div>`:''}
+        <div class="rm-ft">
+          <span class="rs ${SC[r.status]||'rs-p'}">${SL[r.status]||'Planned'}</span>
+          <span class="rm-team">&#127970; ${r.team}</span>
+        </div>
+      </div>`;
+    });
+    html+='</div>';
+  }
+  document.getElementById('rmWrap').innerHTML=html;
+}
+
+function setQF(q,btn,bg){
+  curQ=q;
+  document.querySelectorAll('.qf').forEach(b=>{b.classList.remove('active');b.style.background='';b.style.color='';b.style.borderColor='';});
+  btn.classList.add('active');
+  if(q!=='All'){btn.style.background=bg;btn.style.color='#fff';btn.style.borderColor=bg;}
+  renderRoadmap();
+}
+
+document.addEventListener('click',e=>{
+  const p=document.getElementById('dp');
+  if(p.classList.contains('open')&&!p.contains(e.target)&&!e.target.closest('.card')&&!e.target.closest('.vbtn'))
+    closeDetail();
+});
+
+loadData();
+</script>
+</body>
+</html>
